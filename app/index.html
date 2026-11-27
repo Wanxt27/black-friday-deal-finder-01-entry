@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DealHound — Black Friday 2026 Deal Finder</title>
+<meta name="description" content="47 real Black Friday 2026 deals, checked on 27 November 2026 at Amazon, Best Buy, Walmart, Target, Costco, Home Depot and Sam's Club, each with an honest verdict on whether it is really a deal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <p class="kicker">Black Friday &middot; 27 Nov 2026 &middot; Cyber Monday 30 Nov</p>
+  <h1>DealHound</h1>
+  <p class="tagline">Real Black Friday deals, checked today — with an honest verdict on each one.</p>
+  <p class="best" id="best-line"></p>
+  <dl class="stats">
+    <div><dt>Deals checked</dt><dd id="stat-deals">–</dd></div>
+    <div><dt>Stores</dt><dd id="stat-stores">–</dd></div>
+    <div><dt>Average cut</dt><dd id="stat-avg">–</dd></div>
+    <div><dt>Biggest cut</dt><dd id="stat-best">–</dd></div>
+    <div><dt>All-time lows</dt><dd id="stat-atl">–</dd></div>
+    <div><dt>Total saving if you bought one of each</dt><dd id="stat-saved">–</dd></div>
+  </dl>
+</header>
+
+<main>
+  <section class="controls" aria-label="Find a deal">
+    <div class="row">
+      <label class="search">Search
+        <input id="q" type="search" placeholder="Try &ldquo;AirPods&rdquo;, &ldquo;OLED&rdquo;, &ldquo;vacuum&rdquo;&hellip;" autocomplete="off">
+      </label>
+      <label>Store
+        <select id="store"><option value="All">All stores</option></select>
+      </label>
+      <label>Discount
+        <select id="minoff">
+          <option value="0">Any discount</option>
+          <option value="20">20% off or more</option>
+          <option value="30">30% off or more</option>
+          <option value="40">40% off or more</option>
+          <option value="50">50% off or more</option>
+        </select>
+      </label>
+      <label>Sort
+        <select id="sort">
+          <option value="off">Biggest discount first</option>
+          <option value="save">Biggest saving first</option>
+          <option value="price-asc">Lowest price first</option>
+          <option value="price-desc">Highest price first</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </label>
+      <button id="reset" type="button">Reset</button>
+    </div>
+    <div class="chips" id="cats" role="group" aria-label="Category"></div>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <p class="empty" id="empty" style="display:none">No deals match that. Try a different search or clear a filter.</p>
+
+  <section class="how">
+    <h2>How the verdict works</h2>
+    <p>Every deal carries its sale price, its usual price, the store, and the day it was checked. The verdict reads the discount only:</p>
+    <ul class="verdict-key">
+      <li><span class="pill v-true">True deal</span> 50% off or more — a genuine Black Friday cut.</li>
+      <li><span class="pill v-strong">Strong deal</span> 30–49% off a real usual price.</li>
+      <li><span class="pill v-solid">Solid deal</span> 20–29% off. Worth it if you already wanted it.</li>
+      <li><span class="pill v-mild">Mild deal</span> 10–19% off. Fine, not a doorbuster.</li>
+      <li><span class="pill v-weak">Weak deal</span> Under 10% off. Barely a sale — wait or compare.</li>
+      <li><span class="pill v-check">Check the fine print</span> The “usual” price is a comparable value, not a past price, so the headline cut may overstate the saving.</li>
+    </ul>
+    <p>An <span class="atl">All-time low</span> tag means the source that showed the price called it the lowest it had ever seen for that product.</p>
+    <h2>How these deals were checked</h2>
+    <p>On Friday 27 November 2026 the agent behind this finder read the Black Friday roundups that name each store — 9to5Toys’ Amazon Black Friday Week coverage, BeeBulletin’s deals table, Neeshu, TechRadar’s live blog, The Tech Hacker, PhillyVoice and NewsUnc — and took the sale price and the usual price each one showed. Nothing here is invented: a product, store, price or link appears only if a store or a deals source showed it when it was checked. Each card links to the source that showed its price.</p>
+    <p>Two honest limits: prices move during Black Friday week, so check the listing before you pay; and Best Buy shows a “comparable value” instead of a past price on some items, which this finder flags rather than hiding.</p>
+    <p class="fine">DealHound is an independent finder built for the make.fun “Build the best real Black Friday deal finder” competition. It is not affiliated with Amazon, Best Buy, Walmart, Target, Costco, Home Depot, Sam’s Club, or any brand named here. Store and brand names belong to their owners. No prices are fetched at run time: the site works offline from its own files.</p>
+  </section>
+</main>
+
+<dialog id="dlg">
+  <h2 id="dlg-title"></h2>
+  <div id="dlg-body"></div>
+  <button id="dlg-close" type="button">Close</button>
+</dialog>
+
+<script src="deals.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
